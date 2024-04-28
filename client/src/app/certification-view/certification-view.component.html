@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Date</th>
+          <th scope="col">Lieu</th>
+          <th scope="col">Formateur</th>
+          <th scope="col">Employée</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let certification of certifications;let i=index;">
+        <tr>
+          <th scope="row">{{i}}</th>
+          <td>{{certification.titre}}</td>
+          <td>{{certification.date}}</td>
+          <td>{{certification.lieu}}</td>
+          <td>{{certification.idFormateur}}</td>
+          <td>{{certification.idEmploye}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button *ngIf="roleUser=='formateur'" type="button" [routerLink]="['/certification']" class="btn btn-success btn-sm">Certifications</button>
+</div>

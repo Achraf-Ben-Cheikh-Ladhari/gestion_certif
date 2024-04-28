@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <a class="btn btn-success btn-lg" [routerLink]="['/register']">Create Account</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+ 
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users;let i=index;">
+      <tr>
+        <th scope="row">{{i}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

@@ -1,0 +1,51 @@
+<div class="container mt-4">
+
+
+    <h2 class="text-center" *ngIf="id!=undefined"> Update Formation </h2>
+    <h2 class="text-center" *ngIf="id==undefined"> Create Formation </h2>
+    <div class="col-6 mx-auto">
+        <input [(ngModel)]='formation.titre' type="text" class="form-control m-1" placeholder="Titre">
+        <div class="m-1">
+            <angular-editor [placeholder]="'Description ..'" [config]="config"
+                [(ngModel)]="formation.description"></angular-editor>
+        </div>
+        <input [(ngModel)]='formation.duree' type="text" class="form-control m-1" placeholder="Durée">
+        <input [(ngModel)]='formation.lieu' type="text" class="form-control m-1" placeholder="Lieu">
+        <div class="form-check">
+            <label class="example-margin">Status :</label>
+            <mat-radio-group [(ngModel)]="formation.status">
+                <mat-radio-button class="example-margin" value="ongoing">On-going</mat-radio-button>
+                <mat-radio-button class="example-margin" value="done">Done</mat-radio-button>
+            </mat-radio-group>
+            <ul>
+            <li *ngFor="let item of formation.objectifs">{{item}}</li>
+        </ul>
+        <div class="row m-1">
+            <input [(ngModel)]="obj" type="text" class="form-control w-75" placeholder="Objectifs">
+            <button (click)="formation.objectifs.push(obj);obj=''" class="btn btn-dark w-25">Add</button>
+        </div>
+        <ul>
+            <li *ngFor="let item of formation.ressources">{{item}}</li>
+        </ul>
+        <div class="row m-1">
+            <input [(ngModel)]="resource" type="text" class="form-control w-75" placeholder="Ressources">
+            <button (click)="formation.ressources.push(resource);resource=''" class="btn btn-dark w-25">Add</button>
+        </div>
+ <label class="example-margin">Employées :</label>
+        <div class="form-check" *ngFor="let user of usersEmployes">
+            <mat-checkbox class="example-margin" (change)="toggleUser(user,$event)">{{user.name}} </mat-checkbox>
+        </div> 
+        <label class="example-margin">Formateur :</label>
+        <div class="form-check" *ngFor="let user of usersFormateur">
+           
+            <mat-radio-group [(ngModel)]="formation.formateur">
+                <mat-radio-button class="example-margin" value="{{user._id}}">{{user.name}}</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button (click)='ajout()' *ngIf="id==undefined" class="btn btn-dark form-control m-1">Ajouter Formation</button>
+        <button (click)='modify()' *ngIf="id!=undefined" class="btn btn-dark form-control m-1">Update</button>
+
+
+    </div>
+
+</div>

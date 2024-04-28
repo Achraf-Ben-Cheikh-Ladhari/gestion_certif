@@ -1,0 +1,28 @@
+<div class="container mt-4">
+
+
+    <h2 class="text-center" *ngIf="id!=undefined"> Update {{nameAuthor}} account </h2>
+    <h2 class="text-center" *ngIf="id==undefined"> Create user account </h2>
+    <div class="col-6 mx-auto">
+        <input [(ngModel)]='user.name' type="text" class="form-control m-1" placeholder="name">
+        <input  [(ngModel)]='user.email' type="text" class="form-control m-1" placeholder="email">
+        <select *ngIf="id==undefined" [(ngModel)]='user.role' class="form-select" aria-label="Select the current role">
+            <option selected value="admin">Admin</option>
+            <option value="formateur">Formateur</option>
+            <option value="employe">Employée</option>
+          </select>
+          <!--<div class="form-check" *ngFor="let formations of formationGet" >
+            <mat-checkbox *ngIf="user.role=='employe'" class="example-margin" (change)="toggleFormation(formations,$event)">{{formations.titre}}</mat-checkbox>
+
+            <mat-radio-group *ngIf="user.role=='formateur'" [(ngModel)]="user.formations">
+                <mat-radio-button class="example-margin" value="{{formations._id}}">{{formations.titre}}</mat-radio-button>
+            </mat-radio-group>          
+           </div>-->
+        <input [(ngModel)]='user.password'  type="password" class="form-control m-1" placeholder="password">
+        <button (click)='register()' *ngIf="id==undefined" class="btn btn-dark form-control m-1">Register</button>
+        <button (click)='modify()' *ngIf="id!=undefined" class="btn btn-dark form-control m-1">Update</button>
+
+
+    </div>
+
+</div>

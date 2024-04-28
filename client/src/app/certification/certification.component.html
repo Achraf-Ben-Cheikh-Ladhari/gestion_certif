@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <button type="button" [routerLink]="['/certification/view']" class="btn btn-success btn-sm">Voir les certifications</button>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Lieu</th>
+        <th scope="col">Durée</th>
+        <th scope="col">Formateur</th>
+        <th scope="col">Status</th>
+        <th scope="col">Certification</th>
+        <th scope="col">Absences</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let formation of formations;let i=index;">
+      <tr>
+        <th scope="row">{{i}}</th>
+        <td>{{formation.titre}}</td>
+        <td>{{formation.lieu}}</td>
+        <td>{{formation.duree}}</td>
+        <td>{{userName}}</td>
+        <td>{{formation.status}}</td>
+        <td>{{formation.certifGenerated}}</td>
+        <td>{{formation.absentGenerated}}</td>
+        <td *ngIf="formation.status=='ongoing' || formation.certifGenerated==true "><button disabled="true" class="btn btn-secondary btn-sm">Gérer les Absences</button>   <button  disabled="true" type="button" class="btn btn-success btn-sm">Gérer les certifications</button>
+        </td>
+        <td *ngIf="formation.status=='done'  && formation.certifGenerated==false"><button [routerLink]="['/certification/update/', formation._id]"  class="btn btn-secondary btn-sm">Gérer les Absences</button>   <button type="button" (click)="gerercertif(formation._id)" class="btn btn-success btn-sm">Gérer les certifications</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  </div>

@@ -1,0 +1,13 @@
+<div class="container mt-4">
+
+
+  <div class="fail" *ngIf="message!=''">{{message}}</div>
+    <h2 class="text-center" > Gérer les Absences </h2>
+    <h4 class="text-center" > Check the present employes </h4>
+    <div class="col-6 mx-auto">
+        <section class="example-section" *ngFor="let employe of employesName">
+            <mat-checkbox (change)="toggleUser(employe,$event)" class="example-margin" [color]="color"
+            >{{employe.name}}</mat-checkbox>
+          </section>
+          <button (click)='save()'  class="btn btn-dark form-control m-1">Save</button>
+</div>
